@@ -1,0 +1,40 @@
+{#
+    One vacancy. Override in a theme at partials/<alias>/default.htm.
+    Variable: __SELF__.record. The page has a 404 when it is missing.
+#}
+{% set record = __SELF__.record %}
+<article class="opp opp-detail opp-detail--vacancy opp-detail--{{ record.status }}">
+    <header class="opp-detail__header">
+        <p class="opp-meta"><span class="opp-status opp-status--{{ record.status }}">{{ record.status_label }}</span></p>
+        <h1 class="opp-detail__title">{{ record.title }}</h1>
+        {% partial '@closing' record=record %}
+    </header>
+
+    <dl class="opp-facts">
+        {% if record.reference %}<div class="opp-facts__row"><dt>Reference</dt><dd>{{ record.reference }}</dd></div>{% endif %}
+        {% if record.department %}<div class="opp-facts__row"><dt>Department</dt><dd>{{ record.department }}</dd></div>{% endif %}
+        {% if record.location %}<div class="opp-facts__row"><dt>Location</dt><dd>{{ record.location }}</dd></div>{% endif %}
+        {% if record.employment_type_label %}<div class="opp-facts__row"><dt>Type</dt><dd>{{ record.employment_type_label }}</dd></div>{% endif %}
+        {% if record.salary %}<div class="opp-facts__row"><dt>Salary</dt><dd>{{ record.salary }}</dd></div>{% endif %}
+        {% if record.closing_at %}<div class="opp-facts__row"><dt>Closing date</dt><dd><time datetime="{{ record.closing_at|date('c') }}">{{ record.closing_at|date('l j F Y, H:i') }}</time></dd></div>{% endif %}
+    </dl>
+
+    {% if record.description %}<div class="opp-body">{{ record.description|raw }}</div>{% endif %}
+
+    {% if record.how_to_apply or (record.is_open and (record.apply_url or record.apply_email)) %}
+    <section class="opp-section opp-apply" aria-labelledby="opp-apply-heading">
+        <h2 id="opp-apply-heading" class="opp-heading">How to apply</h2>
+        {% if record.how_to_apply %}<div class="opp-body">{{ record.how_to_apply|raw }}</div>{% endif %}
+        {% if record.is_open and (record.apply_url or record.apply_email) %}
+        <p class="opp-actions">
+            {% if record.apply_url %}<a class="opp-button" href="{{ record.apply_url }}" rel="noopener">Apply online</a>{% endif %}
+            {% if record.apply_email %}<a class="opp-button opp-button--secondary" href="mailto:{{ record.apply_email }}?subject={{ ('Application: ' ~ record.title ~ (record.reference ? ' (' ~ record.reference ~ ')' : ''))|url_encode }}">Apply by email</a>{% endif %}
+        </p>
+        {% elseif not record.is_open %}
+        <p class="opp-closed-note">Applications for this vacancy have closed.</p>
+        {% endif %}
+    </section>
+    {% endif %}
+
+    {% partial '@documents' record=record %}
+</article>

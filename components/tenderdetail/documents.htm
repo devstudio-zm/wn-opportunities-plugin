@@ -1,0 +1,17 @@
+{# Downloadable documents. Param: record. A file's caption (title) is its label. #}
+{% if record.documents|length %}
+<section class="opp-documents" aria-labelledby="opp-documents-heading">
+    <h2 id="opp-documents-heading" class="opp-heading">Documents</h2>
+    <ul class="opp-documents__list">
+        {% for file in record.documents %}
+        <li class="opp-documents__item">
+            <a class="opp-documents__link" href="{{ file.path }}" download>
+                <span class="opp-documents__type">{{ file.extension|upper }}</span>
+                <span class="opp-documents__name">{{ file.title ?: file.file_name }}</span>
+                <span class="opp-documents__size">{{ file.sizeToString() }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}

@@ -1,0 +1,24 @@
+columns:
+    title:
+        label: Title
+        searchable: true
+    reference:
+        label: Reference
+        searchable: true
+    category:
+        label: Category
+        type: partial
+        path: $/impulsetechnologies/opportunities/models/tender/_category_column.htm
+    closing_at:
+        label: Closes
+        type: datetime
+        format: j M Y, H:i
+    status:
+        label: Status
+        type: partial
+        path: $/impulsetechnologies/opportunities/models/_status_column.htm
+        sortable: false
+    published_at:
+        label: Published
+        type: date
+        invisible: true

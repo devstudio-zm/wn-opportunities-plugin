@@ -1,0 +1,17 @@
+scopes:
+    status:
+        label: Status
+        type: switch
+        conditions:
+            - closing_at < now()
+            - closing_at is null or closing_at >= now()
+    category:
+        label: Category
+        type: group
+        modelClass: ImpulseTechnologies\Opportunities\Models\Tender
+        options: getCategoryOptions
+        conditions: category in (:filtered)
+    draft:
+        label: Not published
+        type: checkbox
+        conditions: is_published = 0

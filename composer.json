@@ -1,0 +1,15 @@
+{
+    "name": "impulsetechnologies/wn-opportunities-plugin",
+    "type": "winter-plugin",
+    "description": "Publish tenders and job vacancies with closing dates, documents and theme-agnostic listing and detail components.",
+    "keywords": ["winter", "winter cms", "tenders", "procurement", "careers", "vacancies", "jobs"],
+    "license": "MIT",
+    "authors": [{ "name": "Impulse Technologies" }],
+    "require": {
+        "php": ">=8.0",
+        "composer/installers": "~1.0 || ~2.0"
+    },
+    "autoload": {
+        "psr-4": { "ImpulseTechnologies\\Opportunities\\": "" }
+    }
+}

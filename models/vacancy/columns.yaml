@@ -1,0 +1,24 @@
+columns:
+    title:
+        label: Title
+        searchable: true
+    department:
+        label: Department
+        searchable: true
+    location:
+        label: Location
+        searchable: true
+        invisible: true
+    employment_type:
+        label: Type
+        type: partial
+        path: $/impulsetechnologies/opportunities/models/vacancy/_type_column.htm
+    closing_at:
+        label: Closes
+        type: datetime
+        format: j M Y, H:i
+    status:
+        label: Status
+        type: partial
+        path: $/impulsetechnologies/opportunities/models/_status_column.htm
+        sortable: false

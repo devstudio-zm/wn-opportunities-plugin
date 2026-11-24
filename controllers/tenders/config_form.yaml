@@ -1,0 +1,10 @@
+name: 'impulsetechnologies.opportunities::lang.tenders.singular'
+form: $/impulsetechnologies/opportunities/models/tender/fields.yaml
+modelClass: ImpulseTechnologies\Opportunities\Models\Tender
+defaultRedirect: 'impulsetechnologies/opportunities/tenders'
+create:
+    redirect: 'impulsetechnologies/opportunities/tenders/update/:id'
+    redirectClose: 'impulsetechnologies/opportunities/tenders'
+update:
+    redirect: 'impulsetechnologies/opportunities/tenders'
+    redirectClose: 'impulsetechnologies/opportunities/tenders'

@@ -1,0 +1,4 @@
+1.0.0:
+    - 'First version: tenders and vacancies with closing dates, documents, backend screens and listing and detail components.'
+    - create_tenders_table.php
+    - create_vacancies_table.php

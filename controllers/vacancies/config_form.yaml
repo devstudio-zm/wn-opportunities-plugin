@@ -1,0 +1,10 @@
+name: 'impulsetechnologies.opportunities::lang.vacancies.singular'
+form: $/impulsetechnologies/opportunities/models/vacancy/fields.yaml
+modelClass: ImpulseTechnologies\Opportunities\Models\Vacancy
+defaultRedirect: 'impulsetechnologies/opportunities/vacancies'
+create:
+    redirect: 'impulsetechnologies/opportunities/vacancies/update/:id'
+    redirectClose: 'impulsetechnologies/opportunities/vacancies'
+update:
+    redirect: 'impulsetechnologies/opportunities/vacancies'
+    redirectClose: 'impulsetechnologies/opportunities/vacancies'

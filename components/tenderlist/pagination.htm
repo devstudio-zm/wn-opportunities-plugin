@@ -1,0 +1,9 @@
+{# Previous / next pagination for a list. Uses the paginator's own URLs, so ?filter= is kept. #}
+{% set records = __SELF__.records %}
+{% if records.lastPage is defined and records.lastPage > 1 %}
+<nav class="opp-pagination" aria-label="Pages">
+    {% if records.currentPage > 1 %}<a class="opp-pagination__link" rel="prev" href="{{ records.previousPageUrl }}">Previous</a>{% endif %}
+    <span class="opp-pagination__status">Page {{ records.currentPage }} of {{ records.lastPage }}</span>
+    {% if records.hasMorePages %}<a class="opp-pagination__link" rel="next" href="{{ records.nextPageUrl }}">Next</a>{% endif %}
+</nav>
+{% endif %}

@@ -1,0 +1,11 @@
+{# Closing line: "Closes 12 December 2026, 12:00 · 18 days left", "Closed 3 May 2026", or "Open until filled". Param: record. #}
+<p class="opp-closing">
+    {%- if not record.closing_at -%}
+        Open until filled
+    {%- elseif record.is_open -%}
+        Closes <time datetime="{{ record.closing_at|date('c') }}">{{ record.closing_at|date('j F Y, H:i') }}</time>
+        {%- if record.days_left is not null %} <span class="opp-closing__left">· {{ record.days_left == 0 ? 'closes today' : (record.days_left == 1 ? '1 day left' : record.days_left ~ ' days left') }}</span>{% endif %}
+    {%- else -%}
+        Closed <time datetime="{{ record.closing_at|date('c') }}">{{ record.closing_at|date('j F Y') }}</time>
+    {%- endif -%}
+</p>

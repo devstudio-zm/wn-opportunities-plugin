@@ -1,0 +1,13 @@
+{# One tender in a list. Param: record. #}
+<li class="opp-item opp-item--{{ record.status }}">
+    <article>
+        <p class="opp-meta">
+            <span class="opp-status opp-status--{{ record.status }}">{{ record.status_label }}</span>
+            {% if record.category_label %}<span class="opp-meta__item">{{ record.category_label }}</span>{% endif %}
+            {% if record.reference %}<span class="opp-meta__item">Ref. {{ record.reference }}</span>{% endif %}
+        </p>
+        <h3 class="opp-title">{% if record.url %}<a class="opp-title__link" href="{{ record.url }}">{{ record.title }}</a>{% else %}{{ record.title }}{% endif %}</h3>
+        {% if record.summary %}<p class="opp-summary">{{ record.summary }}</p>{% endif %}
+        {% partial '@closing' record=record %}
+    </article>
+</li>

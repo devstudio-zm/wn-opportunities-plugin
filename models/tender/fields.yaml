@@ -1,0 +1,76 @@
+fields:
+    title:
+        label: Title
+        span: left
+        required: true
+        comment: What is being procured, as it should appear in lists, e.g. Supply and delivery of office furniture
+    slug:
+        label: URL name
+        span: right
+        required: true
+        preset:
+            field: title
+            type: slug
+        comment: Lower case with hyphens; part of the tender's web address. Do not change once published.
+tabs:
+    fields:
+        reference:
+            tab: Tender
+            label: Tender reference
+            span: left
+            comment: The procurement reference number, e.g. ZICA/PROC/2026/014
+        category:
+            tab: Tender
+            label: Category
+            type: dropdown
+            span: right
+            emptyOption: '-- None --'
+            comment: Used to filter tenders
+        closing_at:
+            tab: Tender
+            label: Closing date and time
+            type: datepicker
+            mode: datetime
+            span: left
+            comment: Bids received after this are not accepted. The tender shows as closed from then on.
+        contact_email:
+            tab: Tender
+            label: Contact email
+            span: right
+            comment: For clarifications, e.g. procurement@example.org
+        summary:
+            tab: Tender
+            label: Summary
+            type: textarea
+            size: small
+            comment: One or two sentences shown in lists
+        description:
+            tab: Tender
+            label: Description
+            type: richeditor
+            size: large
+            comment: The full notice. Use headings and lists for eligibility, scope and evaluation.
+        submission_details:
+            tab: Tender
+            label: How to submit
+            type: richeditor
+            size: small
+            comment: Where and how to deliver bids, number of copies, sealed envelope markings, bid security and so on
+        documents:
+            tab: Documents
+            label: Tender documents
+            type: fileupload
+            mode: file
+            useCaption: true
+            comment: Bidding documents, terms of reference, addenda and clarifications (PDF or Word). The title shown is the file's caption.
+        is_published:
+            tab: Publishing
+            label: Published
+            type: switch
+            comment: Show this tender on the website
+        published_at:
+            tab: Publishing
+            label: Publish from
+            type: datepicker
+            mode: datetime
+            comment: Leave empty to publish immediately when switched on

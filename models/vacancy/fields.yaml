@@ -1,0 +1,94 @@
+fields:
+    title:
+        label: Job title
+        span: left
+        required: true
+        comment: e.g. Senior Accountant
+    slug:
+        label: URL name
+        span: right
+        required: true
+        preset:
+            field: title
+            type: slug
+        comment: Lower case with hyphens; part of the vacancy's web address. Do not change once published.
+tabs:
+    fields:
+        reference:
+            tab: Vacancy
+            label: Reference
+            span: left
+            comment: Optional job reference, e.g. HR/2026/07
+        department:
+            tab: Vacancy
+            label: Department
+            span: right
+        location:
+            tab: Vacancy
+            label: Location
+            span: left
+            comment: e.g. Lusaka
+        employment_type:
+            tab: Vacancy
+            label: Type of employment
+            type: dropdown
+            span: right
+            emptyOption: '-- Not stated --'
+        salary:
+            tab: Vacancy
+            label: Salary
+            span: left
+            comment: Optional, as it should appear, e.g. Competitive
+        closing_at:
+            tab: Vacancy
+            label: Closing date and time
+            type: datepicker
+            mode: datetime
+            span: right
+            comment: Applications close at this time. The vacancy shows as closed from then on.
+        summary:
+            tab: Vacancy
+            label: Summary
+            type: textarea
+            size: small
+            comment: One or two sentences shown in lists
+        description:
+            tab: Vacancy
+            label: Description
+            type: richeditor
+            size: large
+            comment: Purpose of the role, responsibilities, qualifications and experience. Use headings and lists.
+        how_to_apply:
+            tab: Applying
+            label: How to apply
+            type: richeditor
+            size: small
+            comment: What to send and where, e.g. a cover letter and CV addressed to the Human Resource Manager
+        apply_email:
+            tab: Applying
+            label: Application email
+            span: left
+            comment: Shown as an "Apply by email" button when set
+        apply_url:
+            tab: Applying
+            label: Application link
+            span: right
+            comment: An online application form, shown as an "Apply online" button when set
+        documents:
+            tab: Documents
+            label: Documents
+            type: fileupload
+            mode: file
+            useCaption: true
+            comment: Job description or application form (PDF or Word). The title shown is the file's caption.
+        is_published:
+            tab: Publishing
+            label: Published
+            type: switch
+            comment: Show this vacancy on the website
+        published_at:
+            tab: Publishing
+            label: Publish from
+            type: datepicker
+            mode: datetime
+            comment: Leave empty to publish immediately when switched on

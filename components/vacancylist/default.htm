@@ -1,0 +1,28 @@
+{#
+    Vacancy list. Override in a theme at partials/<alias>/default.htm (and item.htm).
+    Variables: __SELF__.records (paginator or collection), __SELF__.status, __SELF__.filters, __SELF__.filter.
+#}
+{% set list = __SELF__ %}
+<div class="opp opp-list opp-list--vacancies">
+    {% if list.filters|length > 1 %}
+    <nav class="opp-filters" aria-label="Filter vacancies by type">
+        <ul class="opp-filters__list">
+            <li><a class="opp-filters__link" href="?" {% if not list.filter %}aria-current="page"{% endif %}>All</a></li>
+            {% for key, label in list.filters %}
+            <li><a class="opp-filters__link" href="?filter={{ key|url_encode }}" {% if list.filter == key %}aria-current="page"{% endif %}>{{ label }}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% endif %}
+
+    {% if list.records|length %}
+    <ul class="opp-items">
+        {% for record in list.records %}
+        {% partial '@item' record=record %}
+        {% endfor %}
+    </ul>
+    {% partial '@pagination' %}
+    {% else %}
+    <p class="opp-empty">{{ list.status == 'closed' ? 'There are no closed vacancies to show.' : 'There are no open vacancies at the moment.' }}</p>
+    {% endif %}
+</div>
